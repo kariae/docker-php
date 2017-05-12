@@ -1,0 +1,14 @@
+# env file
+.env
+
+# app directory
+/app
+!/app/Dockerfile
+
+# logs
+/logs
+!/logs/.gitkeep
+
+# postgreSQL data
+/postgresql
+!/postgresql/.gitkeep
