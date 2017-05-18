@@ -25,6 +25,7 @@ services:
             - app
         volumes:
             - ./php-fpm/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+            - ./php-fpm/php.ini:/usr/local/etc/php/php.ini
     nginx:
         build: ./nginx
         container_name: ${CONTAINER_PREFIX}.nginx
