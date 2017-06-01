@@ -15,8 +15,8 @@ RUN docker-php-ext-configure intl \
     --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/include/ \
     --with-xpm-dir=/usr/include/
 
-RUN docker-php-ext-install -j$(nproc) gd iconv pdo pdo_pgsql curl bcmath \
-    mcrypt mbstring json xml xmlrpc zip intl opcache
+RUN docker-php-ext-install -j$(nproc) gd iconv pdo pdo_pgsql pdo_mysql curl \
+    mcrypt mbstring json xml xmlrpc zip bcmath intl opcache
 
 # Install xDebug and Redis
 RUN docker-php-source extract \
@@ -39,7 +39,6 @@ RUN rm -rf /var/cache/apk/* \
     && rm -rf /var/cache/apk/*
 
 RUN mkdir -p ${WORKDIR}
-RUN chown www-data:www-data -R ${WORKDIR}
 
 WORKDIR ${WORKDIR}
 
