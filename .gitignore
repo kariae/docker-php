@@ -12,3 +12,6 @@
 # postgreSQL data
 /postgresql
 !/postgresql/.gitkeep
+
+# IDEs
+/.idea
