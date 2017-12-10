@@ -4,7 +4,8 @@ MAINTAINER Zakariae Filali <filali.zakariae@gmail.com>
 
 ENV WORKDIR "/var/www/app"
 
-RUN apk upgrade --update && apk --no-cache add \
+RUN sed -i -e 's/dl-cdn/dl-4/' /etc/apk/repositories && \
+    apk upgrade --update && apk --no-cache add \
     gcc g++ make git autoconf tzdata openntpd libcurl curl-dev coreutils \
     libmcrypt-dev freetype-dev libxpm-dev libjpeg-turbo-dev libvpx-dev \
     libpng-dev openssl-dev libxml2-dev postgresql-dev icu-dev
