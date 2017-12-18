@@ -22,7 +22,7 @@ After building the containers, just run them and you’re ready to go
 Here is a list of things that can help you
 
 ### xDebug
-- [ ] TODO: How to configure xDebug with a code editor.
+- [x] TODO: How to configure xDebug with a code editor. (an [article](https://lekode.com/2017/12/18/debugging-your-php-application-inside-a-docker-environment-using-xdebug/) that explain how to use it with your IDE.)
 
 ### Customize containers for different environment
 - [ ] TODO: Add other useful containers (Redis, phpMyAdmin …)

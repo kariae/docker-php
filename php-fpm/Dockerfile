@@ -1,14 +1,13 @@
-FROM php:fpm-alpine
+FROM php:7.2-fpm-alpine
 
 MAINTAINER Zakariae Filali <filali.zakariae@gmail.com>
 
 ENV WORKDIR "/var/www/app"
 
-RUN sed -i -e 's/dl-cdn/dl-4/' /etc/apk/repositories && \
-    apk upgrade --update && apk --no-cache add \
+RUN apk upgrade --update && apk --no-cache add \
     gcc g++ make git autoconf tzdata openntpd libcurl curl-dev coreutils \
     libmcrypt-dev freetype-dev libxpm-dev libjpeg-turbo-dev libvpx-dev \
-    libpng-dev openssl-dev libxml2-dev postgresql-dev icu-dev
+    libpng-dev ca-certificates libressl libressl-dev libxml2-dev postgresql-dev icu-dev
 
 RUN docker-php-ext-configure intl \
     && docker-php-ext-configure opcache \
@@ -16,12 +15,12 @@ RUN docker-php-ext-configure intl \
     --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/include/ \
     --with-xpm-dir=/usr/include/
 
-RUN docker-php-ext-install -j$(nproc) gd iconv pdo pdo_pgsql pdo_mysql curl \
-    mcrypt mbstring json xml xmlrpc zip bcmath intl opcache
+RUN docker-php-ext-install -j$(nproc) gd pdo_pgsql pdo_mysql \
+    xmlrpc zip bcmath intl opcache
 
-# Install xDebug and Redis
+# Install Xdebug and Redis
 RUN docker-php-source extract \
-    && pecl install xdebug redis \
+    && pecl install xdebug-alpha redis \
     && docker-php-ext-enable xdebug redis \
     && docker-php-source delete
 
