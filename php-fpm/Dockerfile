@@ -6,7 +6,7 @@ ENV WORKDIR "/var/www/app"
 
 RUN apk upgrade --update && apk --no-cache add \
     gcc g++ make git autoconf tzdata openntpd libcurl curl-dev coreutils \
-    libmcrypt-dev freetype-dev libxpm-dev libjpeg-turbo-dev libvpx-dev \
+    freetype-dev libxpm-dev libjpeg-turbo-dev libvpx-dev \
     libpng-dev ca-certificates libressl libressl-dev libxml2-dev postgresql-dev icu-dev
 
 RUN docker-php-ext-configure intl \
