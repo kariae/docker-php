@@ -25,8 +25,7 @@ RUN docker-php-source extract \
     && docker-php-source delete
 
 # Add timezone
-RUN rm /etc/localtime && \
-    ln -s /usr/share/zoneinfo/UTC /etc/localtime && \
+RUN ln -s /usr/share/zoneinfo/UTC /etc/localtime && \
     "date"
 
 # Install composer
